@@ -7,9 +7,9 @@
     </div>
     <div v-if="menuOpen" class="menu">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Get Started</a></li>
+        <li><a @click="navigateTo('/')">Home</a></li>
+        <li><a @click="navigateTo('/about-us')">About Us</a></li>
+        <li><a @click="navigateTo('/get-started')">Get Started</a></li>
       </ul>
     </div>
   </div>
@@ -26,6 +26,10 @@ export default {
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    },
+    navigateTo(route) {
+      this.$router.push(route);
+      this.menuOpen = false;
     }
   }
 };
@@ -73,5 +77,6 @@ export default {
 .menu a {
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 </style>

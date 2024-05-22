@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="home">
     <AppMenu />
     <div class="content">
       <h1>Here to help.</h1>
@@ -12,7 +12,7 @@
 import AppMenu from './AppMenu.vue';
 
 export default {
-  name: 'HelloWorld',
+  name: 'HomePage',
   components: {
     AppMenu
   }
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.hello {
+.home {
   background-color: #262842;
   color: white;
   display: flex;
