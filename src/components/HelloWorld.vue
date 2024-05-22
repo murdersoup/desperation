@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <AppMenu />
     <div class="content">
       <h1>Here to help.</h1>
       <img src="@/assets/logo.png" alt="Logo" class="logo">
@@ -8,9 +9,14 @@
 </template>
 
 <script>
+import AppMenu from './AppMenu.vue';
+
 export default {
-  name: 'HelloWorld'
-}
+  name: 'HelloWorld',
+  components: {
+    AppMenu
+  }
+};
 </script>
 
 <style scoped>
@@ -22,6 +28,7 @@ export default {
   align-items: center;
   height: 100vh;
   margin: 0;
+  position: relative;
 }
 
 .content {
