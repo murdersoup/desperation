@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       inputText: '',
-      messages: []
+      messages: JSON.parse(localStorage.getItem('messages')) || []
     };
   },
   methods: {
@@ -41,6 +41,7 @@ export default {
       if (this.inputText.trim() !== '') {
         this.messages.push(this.inputText);
         this.inputText = '';
+        localStorage.setItem('messages', JSON.stringify(this.messages));
       }
     }
   }
@@ -75,9 +76,9 @@ h1 {
 }
 
 .logo {
-  width: 50px;
+  width: 8em;
   height: auto;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .content {
