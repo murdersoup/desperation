@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <div class="menu-button" @click="toggleMenu">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
+  <div class="menu">
+    <div class="menu-icon" @click="toggleMenu">
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
     </div>
-    <div v-if="menuOpen" class="menu">
-      <ul>
-        <li><a @click="navigateTo('/')">Home</a></li>
-        <li><a @click="navigateTo('/about-us')">About Us</a></li>
-        <li><a @click="navigateTo('/get-started')">Get Started</a></li>
-      </ul>
+    <div v-if="showMenu" class="menu-items">
+      <router-link to="/" @click="toggleMenu">Home</router-link>
+      <router-link to="/get-started" @click="toggleMenu">Get Started</router-link>
+      <router-link to="/about-us" @click="toggleMenu">About Us</router-link>
     </div>
   </div>
 </template>
@@ -20,63 +18,46 @@ export default {
   name: 'AppMenu',
   data() {
     return {
-      menuOpen: false
+      showMenu: false
     };
   },
   methods: {
     toggleMenu() {
-      this.menuOpen = !this.menuOpen;
-    },
-    navigateTo(route) {
-      this.$router.push(route);
-      this.menuOpen = false;
+      this.showMenu = !this.showMenu;
     }
   }
 };
 </script>
 
 <style scoped>
-.menu-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+.menu {
   position: absolute;
   top: 20px;
   left: 20px;
 }
 
-.line {
-  width: 100%;
-  height: 4px;
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-line {
+  width: 30px;
+  height: 3px;
   background-color: white;
+  margin: 4px 0;
 }
 
-.menu {
-  position: absolute;
-  top: 60px;
-  left: 20px;
-  background-color: #262842;
-  border: 1px solid white;
-  padding: 10px;
-  border-radius: 5px;
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-.menu ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu li {
-  margin: 10px 0;
-}
-
-.menu a {
+.menu-items a {
   color: white;
   text-decoration: none;
-  cursor: pointer;
+  margin-bottom: 10px;
 }
 </style>
